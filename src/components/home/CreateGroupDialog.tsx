@@ -1,13 +1,12 @@
-import { Button } from "../ui/button";
 import CreateGroupForm from "./CreateGroupForm";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { open_create_group_atom } from "@/atoms/open_create_group_atom";
 
 export default function CreateGroupDialog() {
+  const opened = open_create_group_atom.useOpened();
+
   return (
-    <Dialog >
-      <DialogTrigger asChild>
-        <Button>Create Group</Button>
-      </DialogTrigger>
+    <Dialog open={opened} onOpenChange={open_create_group_atom.toggle}>
       <DialogContent>
         <CreateGroupForm />
       </DialogContent>

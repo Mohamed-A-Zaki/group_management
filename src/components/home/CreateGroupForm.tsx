@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "../ui/textarea";
 import { groups_list_atom } from "@/atoms/groups_list_atom";
+import { open_create_group_atom } from "@/atoms/open_create_group_atom";
 
 const FormSchema = z.object({
   name: z.string().min(3, "name must be at least 3 characters."),
@@ -42,19 +43,21 @@ export default function CreateGroupForm() {
     };
 
     groups_list_atom.change("data", [...data, object_to_add]);
+
+    open_create_group_atom.close();
   }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <h3 className="text-center font-semibold text-2xl">Create Group</h3>
+        <h3 className="text-center font-semibold text-2xl">Create New Group</h3>
 
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>group name</FormLabel>
               <FormControl>
                 <Input placeholder="group name" {...field} />
               </FormControl>
@@ -68,7 +71,7 @@ export default function CreateGroupForm() {
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>description</FormLabel>
+              <FormLabel>group description</FormLabel>
               <FormControl>
                 <Textarea
                   placeholder="group description"
