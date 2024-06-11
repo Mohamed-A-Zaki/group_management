@@ -1,4 +1,4 @@
-import CreateGroupForm from "./CreateGroupForm";
+import CreateGroupForm from "../components/home/CreateGroupForm";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { open_create_group_atom } from "@/atoms/open_create_group_atom";
 
